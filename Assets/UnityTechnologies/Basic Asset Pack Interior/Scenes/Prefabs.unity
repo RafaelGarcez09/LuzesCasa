@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 79445cd260e214449b5b6dfb3fb8e67c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -478,8 +478,9 @@ GameObject:
   - component: {fileID: 181513289}
   - component: {fileID: 181513288}
   - component: {fileID: 181513292}
+  - component: {fileID: 181513293}
   m_Layer: 0
-  m_Name: main camera
+  m_Name: Camera Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +547,7 @@ Camera:
   m_GameObject: {fileID: 181513287}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -596,12 +597,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181513287}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18437235, y: 0.3585256, z: -0.079441294, w: 0.9116772}
-  m_LocalPosition: {x: -0.88448, y: 2.6466627, z: -2.5885398}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.17371681, y: -0.31103504, z: 0.06400502, w: 0.9321926}
+  m_LocalPosition: {x: 3.3, y: 2.72, z: -2.32}
+  m_LocalScale: {x: -0.9999527, y: 0.7497167, z: 0.95423603}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 880605592}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &181513292
 MonoBehaviour:
@@ -626,7 +627,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 0
     Time: 2
     CustomCurve:
       serializedVersion: 2
@@ -635,6 +636,21 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &181513293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181513287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c6bf5f6a72bdc4684fba46a88b8fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraManager
+  mainCamera: {fileID: 340122424}
+  camera1: {fileID: 496936120}
+  camera2: {fileID: 2086919377}
 --- !u!1001 &265680386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,6 +917,7 @@ GameObject:
   - component: {fileID: 340122422}
   - component: {fileID: 340122421}
   - component: {fileID: 340122420}
+  - component: {fileID: 340122425}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -1104,7 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: 4
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -1133,6 +1150,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &340122425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340122418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0409d1ff50d9e7448076cf83e6e46b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRegister
 --- !u!1001 &371780110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1920,6 +1949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496936121}
   - component: {fileID: 496936120}
+  - component: {fileID: 496936122}
   m_Layer: 0
   m_Name: VirtualCameraOne
   m_TagString: Untagged
@@ -1978,13 +2008,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496936119}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12917235, y: -0.47645006, z: 0.07100506, w: 0.8667572}
+  m_LocalRotation: {x: 0.081535876, y: 0.44487354, z: -0.03861858, w: 0.89103764}
   m_LocalPosition: {x: -2.303, y: 2.296, z: -2.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 16.953, y: -57.595, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.35, y: 53.083, z: 0.217}
+--- !u!114 &496936122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496936119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0409d1ff50d9e7448076cf83e6e46b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRegister
 --- !u!1001 &583360932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2614,8 +2656,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.857, z: 0}
   m_LocalScale: {x: -1, y: 0.7039053, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 181513291}
+  m_Children: []
   m_Father: {fileID: 1892832824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &880605593
@@ -5715,6 +5756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086919378}
   - component: {fileID: 2086919377}
+  - component: {fileID: 2086919379}
   m_Layer: 0
   m_Name: VirtualCameraOne (1)
   m_TagString: Untagged
@@ -5765,21 +5807,37 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!4 &2086919378
-Transform:
+--- !u!224 &2086919378
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086919376}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.18437235, y: 0.3585256, z: -0.079441294, w: 0.9116772}
-  m_LocalPosition: {x: 3.3, y: 2.72, z: -2.32}
+  m_LocalRotation: {x: 0.17371681, y: -0.31103504, z: 0.06400502, w: 0.9321926}
+  m_LocalPosition: {x: 0, y: 0, z: -2.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 23.15, y: 42.774, z: -0.788}
+  m_LocalEulerAnglesHint: {x: 21.327, y: -36.773, z: 0.693}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3.3, y: 2.72}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2086919379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086919376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0409d1ff50d9e7448076cf83e6e46b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRegister
 --- !u!1001 &2094854685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5989,6 +6047,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 482902427}
   - {fileID: 1018148211}
+  - {fileID: 181513291}
   - {fileID: 1892832824}
   - {fileID: 496936121}
   - {fileID: 2086919378}

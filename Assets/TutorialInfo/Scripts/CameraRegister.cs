@@ -3,11 +3,13 @@ using Unity.Cinemachine;
 
 public class CameraRegister : MonoBehaviour
 {
-    private void OEnable()
+
+    private void Awake()
     {
         CameraManager.Register(GetComponent<CinemachineCamera>());
     }
-    private void ODisable()
+
+    private void OnDestroy()
     {
         CameraManager.Unregister(GetComponent<CinemachineCamera>());
     }

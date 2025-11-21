@@ -10,6 +10,10 @@ public class CameraManager : MonoBehaviour
 
     public static CinemachineCamera ActiveCamera = null;
 
+    public CinemachineCamera mainCamera;
+    public CinemachineCamera camera1;
+    public CinemachineCamera camera2;
+
     public static bool IsActiveCamera(CinemachineCamera camera)
     {
         return camera == ActiveCamera;
@@ -17,15 +21,13 @@ public class CameraManager : MonoBehaviour
 
     public static void SwtichCamera(CinemachineCamera newCamera)
     {
-        newCamera.Priority = 10;
+        if (!cameras.Contains(newCamera)) return;
+
         ActiveCamera = newCamera;
 
         foreach (CinemachineCamera cam in cameras)
         {
-            if (cam != newCamera)
-            {
-                cam.Priority = 0;
-            }
+            cam.gameObject.SetActive(cam == newCamera);
         }
     }
 
@@ -39,5 +41,25 @@ public class CameraManager : MonoBehaviour
         cameras.Remove(camera);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SwtichCamera(mainCamera);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SwtichCamera(camera1);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SwtichCamera(camera2);
+        }
+
+    }
 
 }
