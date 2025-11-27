@@ -7,19 +7,19 @@ public class ChangeAudio : MonoBehaviour
 {
    [SerializeField] private AudioMixer aMixer;
     
-    public void ChangeValue(Slider slider)
+    public void ChangeValue(Slider Slider)
     {
-        switch (slider.value)
+        switch (Slider.value)
         {
             case 0:
                 aMixer.SetFloat("Music", -88);
                 break;
             case 1:
                 aMixer.SetFloat("Music", -40);
-                    break;
-                case 2:
+                break;
+                case 2: 
                 aMixer.SetFloat("Music", -20);
-                    break;
+                break;
                 case 3:
                 aMixer.SetFloat("Music", -10);
                 break;
